@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ilyas Rakhimkulov – Odoo Developer</title>
+<meta name="description" content="Odoo ERP developer with 11 years of Odoo (v6–19) and 14 years of ERP experience. Selected projects in accounting, manufacturing, e-commerce and integrations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23714B67'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='15' fill='white' text-anchor='middle'%3EIR%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #f7f5f8;
+    --surface: #ffffff;
+    --text: #1d1a20;
+    --muted: #5f5866;
+    --border: #e7e2ea;
+    --accent: #714b67;
+    --accent-soft: #f1e9ef;
+    --accent-2: #017e84;
+    --shadow: 0 1px 2px rgba(29, 26, 32, .04), 0 4px 16px rgba(29, 26, 32, .06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141216;
+      --surface: #1d1a20;
+      --text: #f1edf3;
+      --muted: #a79fae;
+      --border: #2e2a33;
+      --accent: #c99bbd;
+      --accent-soft: #2c2230;
+      --accent-2: #4fc3c8;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 4px 16px rgba(0, 0, 0, .25);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141216;
+    --surface: #1d1a20;
+    --text: #f1edf3;
+    --muted: #a79fae;
+    --border: #2e2a33;
+    --accent: #c99bbd;
+    --accent-soft: #2c2230;
+    --accent-2: #4fc3c8;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 4px 16px rgba(0, 0, 0, .25);
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+
+  header { padding: 56px 0 32px; }
+  .hello { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+  .avatar {
+    width: 96px; height: 116px; border-radius: 12px; flex: none;
+    object-fit: cover; box-shadow: var(--shadow);
+  }
+  h1 { margin: 0; font-size: clamp(28px, 5vw, 40px); line-height: 1.15; letter-spacing: -.02em; }
+  .role { margin: 4px 0 0; color: var(--muted); font-size: 18px; }
+  .intro { max-width: 720px; margin: 24px 0 0; font-size: 17px; }
+
+  .stats { display: flex; flex-wrap: wrap; gap: 12px; margin: 28px 0 0; padding: 0; list-style: none; }
+  .stats li {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 10px 16px; min-width: 120px;
+  }
+  .stats b { display: block; font-size: 22px; line-height: 1.2; color: var(--accent); }
+  .stats span { font-size: 13px; color: var(--muted); }
+
+  .links { display: flex; flex-wrap: wrap; gap: 10px; margin: 28px 0 0; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 16px; border-radius: 10px;
+    border: 1px solid var(--border); background: var(--surface); color: var(--text);
+    text-decoration: none; font-weight: 500; font-size: 15px;
+    transition: border-color .15s, transform .15s;
+  }
+  .btn:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  :root[data-theme="dark"] .btn.primary { color: #141216; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn.primary { color: #141216; } }
+  .btn svg { width: 18px; height: 18px; }
+
+  h2 { font-size: 22px; margin: 40px 0 6px; letter-spacing: -.01em; }
+  .sub { margin: 0 0 20px; color: var(--muted); }
+  h2 + .grid { margin-top: 18px; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+    padding: 22px; box-shadow: var(--shadow);
+    display: flex; flex-direction: column; gap: 10px;
+    transition: transform .15s, border-color .15s;
+  }
+  .card:hover { transform: translateY(-2px); border-color: var(--accent); }
+  .icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    display: grid; place-items: center;
+    background: var(--accent-soft); color: var(--accent);
+  }
+  .icon svg { width: 24px; height: 24px; }
+  .card h3 { margin: 4px 0 0; font-size: 17px; line-height: 1.3; }
+  .card p { margin: 0; color: var(--muted); font-size: 15px; flex: 1; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+  .tags span {
+    font-size: 12px; font-weight: 500; padding: 3px 9px; border-radius: 999px;
+    background: var(--bg); border: 1px solid var(--border); color: var(--muted);
+  }
+
+  .card-link { font-size: 14px; font-weight: 600; color: var(--accent); text-decoration: none; margin-top: 2px; }
+  .card-link:hover { text-decoration: underline; }
+
+  .skills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skills span {
+    padding: 6px 12px; border-radius: 8px; font-size: 14px;
+    background: var(--surface); border: 1px solid var(--border);
+  }
+
+  footer { margin: 56px 0 0; padding: 24px 0 40px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  @media (max-width: 480px) {
+    header { padding-top: 32px; }
+    .grid { grid-template-columns: 1fr; }
+    .stats li { flex: 1 1 calc(50% - 12px); min-width: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="hello">
+    <img class="avatar" src="photo.jpg" alt="Ilyas Rakhimkulov" width="96" height="116">
+    <div>
+      <h1>Ilyas Rakhimkulov</h1>
+      <p class="role">Odoo ERP Developer · Remote</p>
+    </div>
+  </div>
+  <p class="intro">I design and build Odoo solutions end to end: business analysis, process design, architecture, development, go-live and support. Below is a selection of what I have built for manufacturers, online shops and service companies across Europe and the US.</p>
+
+  <ul class="stats">
+    <li><b>11+</b><span>years with Odoo</span></li>
+    <li><b>14</b><span>years in ERP</span></li>
+    <li><b>v6 – v19</b><span>Odoo versions</span></li>
+    <li><b>198</b><span>OCA pull requests</span></li>
+    <li><b>760+</b><span>pull requests on GitHub</span></li>
+  </ul>
+
+  <nav class="links">
+    <a class="btn primary" href="Ilyas_Rakhimkulov_CV.pdf">
+      <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>Download CV</a>
+    <a class="btn" href="mailto:railrash@gmail.com">
+      <svg viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>railrash@gmail.com</a>
+    <a class="btn" href="https://www.linkedin.com/in/ilyas-rakhimkulov-3bb7711a0">
+      <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+    <a class="btn" href="https://github.com/ilyasProgrammer">
+      <svg viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
+    <a class="btn" href="https://www.upwork.com/freelancers/~01c13babf92702d82c">
+      <svg viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Upwork</a>
+  </nav>
+</header>
+
+<main>
+<h2>Selected projects</h2>
+
+<section class="grid">
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 17.5v-11"/></svg></div>
+    <h3>E-commerce accounting automation</h3>
+    <p>Shop orders become posted invoices, credit notes from returns, and payments and refunds from gateway transactions, all automatically. Used by several German online retailers.</p>
+    <div class="tags"><span>Odoo 17–19</span><span>Shopify</span><span>Magento</span><span>Accounting</span></div>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
+    <h3>Bank reconciliation &amp; EU VAT</h3>
+    <p>Automated reconciliation rules that run before standard matching, fiscal positions by goods origin for multi-country VAT, and kit invoices split into components with their own tax rates.</p>
+    <div class="tags"><span>Accounting</span><span>OSS / VAT</span><span>Reconciliation</span></div>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></svg></div>
+    <h3>Engineer-to-order manufacturing</h3>
+    <p>For an industrial machine builder: each sales order line becomes a project with tasks, nested bills of materials and manufacturing orders. It covers full BoM structure views, BoM replacement, delivery-date validation, subcontracting, order acknowledgements and role-based controls. About 16,000 lines and 600 commits, maintained from Odoo 13 to 17.</p>
+    <div class="tags"><span>MRP</span><span>Project</span><span>Subcontracting</span><span>Odoo 13–17</span></div>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><path d="m12 3-8 4.5v9L12 21l8-4.5v-9L12 3"/><path d="m12 12 8-4.5"/><path d="M12 12v9"/><path d="M12 12 4 7.5"/></svg></div>
+    <h3>Autodesk Vault / PLM integration</h3>
+    <p>Products and bills of materials created from Autodesk Vault. Drawings and CAD files are fetched automatically, duplicates and product states are checked on a schedule, and drawing packages are generated per purchase order. Includes migration of existing PLM data.</p>
+    <div class="tags"><span>Autodesk Vault</span><span>PLM</span><span>BoM</span><span>Cron jobs</span></div>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7 12 12l8.7-5"/><path d="M12 22V12"/><circle cx="12" cy="12" r="2.5"/></svg></div>
+    <h3>3D CAD viewer in Odoo</h3>
+    <p>3D models attached to products open right in the browser, with no CAD licence needed: STEP, STL, OBJ, glTF and 3DS, which you can rotate and zoom. Models can also be embedded in pages or shared with a link.</p>
+    <div class="tags"><span>STEP / STL</span><span>Online3DViewer</span><span>JS</span><span>Website</span></div>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></div>
+    <h3>Custom vendor portal</h3>
+    <p>Suppliers answer RFQs online: prices, delivery times and validity per line, bulk defaults, last-price restore, Excel export and confirmation. They also download the drawings for each part (DWG, DXF, STEP) as a ZIP. Purchase orders are generated from BoM demand, and tenders become blanket orders.</p>
+    <div class="tags"><span>Purchase</span><span>Portal</span><span>Blueprints</span><span>MRP</span></div>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/><path d="m7 8 3 3-3 3"/><path d="M13 14h4"/></svg></div>
+    <h3>Shop floor &amp; CNC</h3>
+    <p>CNC machine programs pulled from the network share into work orders, drawings and PDFs on the shop-floor tablet, work-order time tracking that stops at employee checkout, plus merging, mass completion and rescheduling of manufacturing orders and automatic scrap replenishment.</p>
+    <div class="tags"><span>Shop Floor</span><span>CNC</span><span>Work orders</span><span>Attendance</span></div>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></svg></div>
+    <h3>Cutting optimiser</h3>
+    <p>Solves the 1D cutting-stock problem in manufacturing: calculates how to cut bars, pipes and rods with minimal waste.</p>
+    <div class="tags"><span>MRP</span><span>Optimisation</span><span>Python</span></div>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div>
+    <h3>Security asset &amp; vulnerability management</h3>
+    <p>A complete application built on Odoo: configuration items and devices, security findings imported from Qualys, risk assessment and remediation tasks, a knowledge base, Excel imports and reports, and dashboards.</p>
+    <div class="tags"><span>Custom app</span><span>Qualys</span><span>Dashboards</span></div>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></div>
+    <h3>Shipping, returns &amp; 3PL</h3>
+    <p>Shipping labels fetched early to catch bad addresses, direct label printing, a returns workflow linked to credit notes, and automatic re-routing of orders to third-party logistics providers.</p>
+    <div class="tags"><span>Sendcloud</span><span>PrintNode</span><span>Inventory</span></div>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/><path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"/><path d="M12 3v6"/></svg></div>
+    <h3>eBay &amp; Amazon business system</h3>
+    <p>As lead developer for a US auto-parts e-retailer, I built a 75-module Odoo system (about 55,000 lines): eBay and Amazon stores with FBA, listings and competitor-based repricing, supplier dropshipping, returns, ShipStation, FedEx, UPS and USPS, Zebra label printing, warehouse processing and business reports. It's open source, with 22 stars and 18 forks.</p>
+    <div class="tags"><span>eBay</span><span>Amazon</span><span>Dropshipping</span><span>Odoo 10</span></div>
+    <a class="card-link" href="https://github.com/ilyasProgrammer/Odoo-eBay-Amazon">View on GitHub →</a>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></div>
+    <h3>Marketplace &amp; carrier integrations</h3>
+    <p>A custom eBay connector that syncs products and imports orders, Amazon integration, a Shopware connector and a Printify print-on-demand connector, plus carrier APIs for labels and pickups (DB Schenker over SOAP, DHL Paket, FedEx, ShipStation). Also price adjustment based on competitors' prices.</p>
+    <div class="tags"><span>eBay</span><span>Shopware</span><span>Printify</span><span>DB Schenker</span><span>DHL</span><span>FedEx</span><span>ShipStation</span></div>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M8 7v10"/><path d="M12 7v10"/><path d="M17 7v10"/></svg></div>
+    <h3>Mobile warehouse app</h3>
+    <p>A barcode-scanning app for warehouse staff on phones: inventory counts, stock moves, product and location lookup, and pick-pack-ship where DHL or DB Schenker labels are requested and printed automatically.</p>
+    <div class="tags"><span>Inventory</span><span>Barcode</span><span>OWL / JS</span><span>PrintNode</span></div>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></div>
+    <h3>Shared inbox for every app</h3>
+    <p>Read/unread tracking of customer emails and portal messages across CRM, Sales, Helpdesk, Invoicing and Project, so no customer message goes unanswered.</p>
+    <div class="tags"><span>Discuss</span><span>CRM</span><span>Helpdesk</span></div>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+    <h3>CRM automation &amp; business alerts</h3>
+    <p>Opportunities created and updated automatically from quotations, won and lost customers re-engaged after a set time, and time-based business alerts sent to n8n workflows.</p>
+    <div class="tags"><span>CRM</span><span>Sales</span><span>n8n</span></div>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></div>
+    <h3>Online product designer</h3>
+    <p>Odoo 19 e-shop connected to an external product designer: customers design products, which return to the cart with correct pricing, and saved designs appear in their portal.</p>
+    <div class="tags"><span>Odoo 19</span><span>Website</span><span>eCommerce</span></div>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></div>
+    <h3>DATEV export &amp; German reports</h3>
+    <p>DATEV ASCII and XML exports packaged with invoice PDFs and emailed automatically, plus DIN 5008 invoice, quotation, delivery slip and timesheet layouts.</p>
+    <div class="tags"><span>DATEV</span><span>DIN 5008</span><span>QWeb</span></div>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></div>
+    <h3>ERP for a solar installer</h3>
+    <p>Quotations with automatic kWp calculation and text templates, order lines imported from CSV, product and BoM imports, and project naming for field-service teams.</p>
+    <div class="tags"><span>Sales</span><span>Field Service</span><span>Project</span></div>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg></div>
+    <h3>Upgrades &amp; migrations</h3>
+    <p>Version upgrades from Odoo 13 to 17 and from 17 to 19, including custom modules, third-party connectors and dozens of OCA modules, with staging protection for safe testing.</p>
+    <div class="tags"><span>Odoo 13 → 19</span><span>OCA</span><span>DevOps</span></div>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><line x1="6" x2="6" y1="3" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></div>
+    <h3>Open source (OCA)</h3>
+    <p>198 pull requests to the Odoo Community Association: 30 new modules and 16 migrations merged. Modules include web_field_required_invisible_manager, sale_commission_product_criteria, account_invoice_inter_company_queued, mrp_bom_attribute_match and product_internal_reference_generator.</p>
+    <div class="tags"><span>OCA</span><span>Open source</span><span>GitHub</span></div>
+    <a class="card-link" href="https://github.com/search?q=author%3AilyasProgrammer+org%3AOCA+is%3Apr+is%3Amerged&type=pullrequests">View merged PRs →</a>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2"/><path d="m11.5 9.5 2-2"/><path d="m8.5 6.5 2-2"/><path d="m17.5 15.5 2-2"/></svg></div>
+    <h3>Product configurator with dimension pricing</h3>
+    <p>Products sold by measured dimensions, with a price breakdown that follows the pricelist, discounts and commissions, plus dynamic product labels and BoM cost updates per variant.</p>
+    <div class="tags"><span>Sales</span><span>Pricelists</span><span>Odoo 14</span></div>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+    <h3>Sales commission engine</h3>
+    <p>Several agents per order, commission rules by product, category, region and discount, triple-discount handling, commissions on credit notes and down payments, and queued computation for large volumes.</p>
+    <div class="tags"><span>Commission</span><span>Sales</span><span>OCA</span></div>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+    <h3>Approvals &amp; field-level access control</h3>
+    <p>Multi-step approval workflows, plus a no-code manager where admins make any field required, read-only or hidden per user group and condition, without writing views.</p>
+    <div class="tags"><span>Tier validation</span><span>Web client</span><span>Security</span></div>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg></div>
+    <h3>Voice tickets &amp; field worksheets</h3>
+    <p>Helpdesk tickets created from voice recordings, and several worksheets per field-service task, so a team of technicians can each report on the same job.</p>
+    <div class="tags"><span>Helpdesk</span><span>Field Service</span><span>JS</span></div>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg></div>
+    <h3>QA test-scenario framework</h3>
+    <p>Business scenarios (returns, credit notes, reconciliation) run from a staging URL and leave real records behind for functional review, with HTML or JSON results for CI.</p>
+    <div class="tags"><span>Testing</span><span>QA</span><span>Odoo.sh</span></div>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg></div>
+    <h3>Bulk orders to 100+ locations</h3>
+    <p>One sales order duplicated to every delivery address of a customer in a single action, keeping products, prices and terms identical across all copies.</p>
+    <div class="tags"><span>Sales</span><span>Odoo 19</span></div>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></div>
+    <h3>Odoo Apps Store modules</h3>
+    <p>Published apps for Odoo 10: export to MS Word, radio-button filters, pivot by hour, hiding the left menu, and opening list records by double-click.</p>
+    <div class="tags"><span>Apps Store</span><span>Odoo 10</span><span>Web client</span></div>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></div>
+    <h3>Telegram sales bot</h3>
+    <p>Customers browse products and place orders in Odoo through a Telegram messenger bot.</p>
+    <div class="tags"><span>Telegram API</span><span>Sales</span></div>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></div>
+    <h3>Car rental &amp; vehicle parts</h3>
+    <p>A fleet rental system for a company in Saudi Arabia, and an online vehicle parts shop integrated with external supplier services.</p>
+    <div class="tags"><span>Fleet</span><span>eCommerce</span><span>Integrations</span></div>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg></div>
+    <h3>Construction &amp; project management</h3>
+    <p>Construction management modules, a SMART-based extension of Odoo project management, and a goal-and-problem tracking system with assessments and a Q&amp;A forum.</p>
+    <div class="tags"><span>Project</span><span>Construction</span><span>Forum</span></div>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg></div>
+    <h3>eCommerce checkout &amp; payments</h3>
+    <p>New checkout options (pickup and pay at store, pay now and deliver), automatic invoices after online payment, and email confirmation for sign-ups.</p>
+    <div class="tags"><span>Website</span><span>Payments</span><span>Odoo 9–10</span></div>
+  </article>
+
+  <article class="card">
+    <div class="icon"><svg viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg></div>
+    <h3>Telecom &amp; media services</h3>
+    <p>Telecom billing, integration with the GSM Arena and Unlockbase APIs for mobile-unlock services, and sales of TV service packages for hotels and hostels.</p>
+    <div class="tags"><span>REST APIs</span><span>Sales</span><span>Subscriptions</span></div>
+  </article>
+
+</section>
+
+<h2>Skills</h2>
+<p class="sub">Daily tools and areas of Odoo I work in.</p>
+<div class="skills">
+  <span>Python</span><span>JavaScript / OWL</span><span>PostgreSQL</span><span>QWeb reports</span><span>REST / XML-RPC APIs</span>
+  <span>Linux servers</span><span>Docker</span><span>Git &amp; CI</span><span>Odoo.sh</span>
+  <span>Accounting</span><span>Manufacturing</span><span>Inventory</span><span>Sales &amp; CRM</span><span>Purchase</span><span>POS</span><span>Website &amp; eCommerce</span>
+  <span>Business analysis</span><span>Team leading</span>
+</div>
+</main>
+
+<footer>
+  © 2026 Ilyas Rakhimkulov · <a href="mailto:railrash@gmail.com">railrash@gmail.com</a> · Open to full-time, part-time or project-based work.
+</footer>
+
+</div>
+</body>
+</html>
