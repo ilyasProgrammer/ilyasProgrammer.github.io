@@ -101,7 +101,6 @@
     transition: transform .15s, border-color .15s;
   }
   .card:hover { transform: translateY(-2px); border-color: var(--accent); }
-  .card.wide { grid-column: 1 / -1; }
   .icon {
     width: 44px; height: 44px; border-radius: 12px;
     display: grid; place-items: center;
@@ -176,11 +175,11 @@
 
 <section class="grid">
 
-  <article class="card wide">
+  <article class="card">
     <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg></div>
     <h3>ODI – AI suite for Odoo</h3>
-    <p>My own product under ODI Labs: 16 AI modules for Odoo 16–19. Vendor PDFs are read into structured data and routed to the right workflow. Supplier confirmations and quotes are checked against purchase orders, and vendor bills against orders and receipts. Also included: lead follow-ups, helpdesk triage and reply drafts, and early warnings for late manufacturing orders. An AI agent and the "Ask ODI" chat answer business questions from live Odoo data within the user's access rights, with fixed metric definitions, search over company documents and an MCP server for Claude. It runs on Claude, OpenAI, Gemini, Mistral or a local model, with per-call cost logging, budgets, personal-data masking and a human review queue. 200+ automated tests, and answer accuracy measured on 25 business questions with known answers.</p>
-    <div class="tags"><span>Odoo 16–19</span><span>LLM / Claude</span><span>AI agents</span><span>MCP</span><span>Document AI</span><span>RAG</span><span>Local models</span></div>
+    <p>My own product under ODI Labs: 16 AI modules for Odoo 16–19. They read vendor PDFs and check confirmations, quotes and bills against purchase orders. An AI agent answers business questions from live Odoo data within the user's access rights. It runs on Claude, OpenAI, Gemini or a local model, with cost budgets and personal-data masking.</p>
+    <div class="tags"><span>Odoo 16–19</span><span>LLM / Claude</span><span>AI agents</span><span>MCP</span></div>
     <a class="card-link" href="https://odi-labs.com/">Visit odi-labs.com →</a>
   </article>
 
